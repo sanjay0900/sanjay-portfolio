@@ -1,6 +1,10 @@
-import { AvailabilityBadge } from "@/components/ui/availability-badge";
+import { AvailabilityBadge as Badge } from "@/components/ui/availability-badge";
 
-<AvailabilityBadge />
-
-// Optional overrides
-<AvailabilityBadge label="Open to consulting" className="..." />
+export default function HeroAvailabilityBadge() {
+  return (
+    <Badge
+      label="Open to consulting"
+      className=""
+    />
+  );
+}
