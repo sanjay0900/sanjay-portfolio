@@ -9,20 +9,15 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-28"
+      className="relative overflow-hidden pt-28 pb-20 sm:pt-40 sm:pb-28"
     >
-      {/* Background Glow */}
+      {/* Vibrant Background */}
 
-      <motion.div
-        className="absolute inset-0 -z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      >
+      <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
-          className="absolute left-1/2 top-0 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-[120px] sm:h-[600px] sm:w-[600px] lg:h-[700px] lg:w-[700px] lg:blur-[180px]"
+          className="absolute -left-32 top-0 h-[380px] w-[380px] rounded-full bg-violet-600/20 blur-[130px] sm:left-[10%] sm:h-[500px] sm:w-[500px] sm:blur-[160px]"
           animate={{
-            scale: [1, 1.08, 1],
+            scale: [1, 1.12, 1],
             opacity: [0.2, 0.35, 0.2],
           }}
           transition={{
@@ -31,19 +26,32 @@ export default function Hero() {
             ease: "easeInOut",
           }}
         />
-      </motion.div>
 
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20">
+        <motion.div
+          className="absolute -right-32 top-[20%] h-[350px] w-[350px] rounded-full bg-cyan-500/15 blur-[120px] sm:right-[5%] sm:h-[450px] sm:w-[450px] sm:blur-[150px]"
+          animate={{
+            scale: [1.05, 1, 1.05],
+            opacity: [0.15, 0.28, 0.15],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
 
+        <div className="absolute bottom-0 left-1/2 h-[250px] w-[450px] -translate-x-1/2 rounded-full bg-fuchsia-500/10 blur-[120px] sm:h-[300px] sm:w-[600px] sm:blur-[150px]" />
+      </div>
+
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-6 lg:grid-cols-2 lg:gap-20">
         {/* LEFT */}
 
         <div>
-
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6 inline-flex rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-xs text-emerald-400 sm:mb-8 sm:text-sm"
+            className="mb-6 inline-flex max-w-full rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-2 text-xs font-medium text-emerald-300 sm:mb-8 sm:px-4 sm:text-sm"
           >
             {HERO.badge}
           </motion.div>
@@ -55,7 +63,7 @@ export default function Hero() {
               delay: 0.15,
               duration: 0.7,
             }}
-            className="whitespace-pre-line text-4xl font-black leading-none tracking-tight text-white sm:text-5xl lg:text-8xl"
+            className="whitespace-pre-line text-[3.25rem] font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-6xl lg:text-8xl"
           >
             {HERO.title}
           </motion.h1>
@@ -72,6 +80,8 @@ export default function Hero() {
             {HERO.description}
           </motion.p>
 
+          {/* CTAs */}
+
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,29 +89,27 @@ export default function Hero() {
               delay: 0.45,
               duration: 0.6,
             }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
+            className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4"
           >
-
             <Link
               href={HERO.ctas.primary.href}
-              className="w-full rounded-xl bg-white px-8 py-4 text-center font-semibold text-black transition-all duration-300 hover:scale-105 hover:bg-zinc-100 sm:w-auto"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl bg-gradient-to-r from-violet-500 via-indigo-500 to-cyan-500 px-6 py-3.5 font-semibold text-white shadow-lg shadow-violet-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/30 sm:px-8 sm:py-4"
             >
               {HERO.ctas.primary.label}
             </Link>
 
             <Link
               href={HERO.ctas.secondary.href}
-              className="w-full rounded-xl border border-white/10 px-8 py-4 text-center font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white/5 sm:w-auto"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-cyan-400/5 sm:px-8 sm:py-4"
             >
               {HERO.ctas.secondary.label}
             </Link>
-
           </motion.div>
 
-          <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4">
+          {/* Stats */}
 
+          <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-7 sm:mt-16 sm:grid-cols-4 sm:gap-6">
             {HERO.stats.map((item, index) => (
-
               <motion.div
                 key={item.label}
                 initial={{
@@ -117,21 +125,16 @@ export default function Hero() {
                   duration: 0.5,
                 }}
               >
-
-                <h2 className="text-3xl font-bold text-white sm:text-4xl">
+                <h2 className="text-2xl font-bold text-white sm:text-4xl">
                   {item.value}
                 </h2>
 
-                <p className="mt-2 text-sm text-zinc-500">
+                <p className="mt-1.5 max-w-[120px] text-xs leading-5 text-zinc-500 sm:mt-2 sm:text-sm">
                   {item.label}
                 </p>
-
               </motion.div>
-
             ))}
-
           </div>
-
         </div>
 
         {/* RIGHT */}
@@ -140,24 +143,26 @@ export default function Hero() {
           initial={{
             opacity: 0,
             scale: 0.9,
-            x: 50,
+            y: 30,
           }}
           animate={{
             opacity: 1,
             scale: 1,
-            x: 0,
+            y: 0,
           }}
           transition={{
             duration: 0.9,
             delay: 0.3,
           }}
-          className="relative flex justify-center"
+          className="relative flex justify-center lg:justify-end"
         >
+          {/* Violet Glow */}
 
           <motion.div
-            className="absolute h-72 w-72 rounded-full bg-indigo-500/20 blur-[80px] sm:h-96 sm:w-96 sm:blur-[120px]"
+            className="absolute h-72 w-72 rounded-full bg-violet-500/20 blur-[100px] sm:h-96 sm:w-96 sm:blur-[120px]"
             animate={{
-              scale: [1, 1.08, 1],
+              scale: [1, 1.1, 1],
+              opacity: [0.2, 0.35, 0.2],
             }}
             transition={{
               duration: 6,
@@ -165,6 +170,22 @@ export default function Hero() {
               ease: "easeInOut",
             }}
           />
+
+          {/* Cyan Glow */}
+
+          <motion.div
+            className="absolute -right-6 top-16 h-48 w-48 rounded-full bg-cyan-400/10 blur-[90px] sm:-right-10 sm:top-20 sm:h-64 sm:w-64 sm:blur-[100px]"
+            animate={{
+              scale: [1, 1.15, 1],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Profile Card */}
 
           <motion.div
             whileHover={{
@@ -175,11 +196,9 @@ export default function Hero() {
               type: "spring",
               stiffness: 180,
             }}
-            className="relative w-full max-w-[430px] rounded-[32px] border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:p-6"
+            className="relative w-full max-w-[380px] rounded-[28px] border border-violet-400/20 bg-white/[0.04] p-4 shadow-2xl shadow-violet-900/20 backdrop-blur-xl sm:max-w-[430px] sm:rounded-[32px] sm:p-6"
           >
-
-            <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-zinc-800">
-
+            <div className="aspect-[4/5] overflow-hidden rounded-[22px] bg-zinc-800 sm:rounded-3xl">
               <Image
                 src="/profile.png"
                 alt="Sanjay Das"
@@ -188,49 +207,44 @@ export default function Hero() {
                 priority
                 className="h-full w-full object-cover transition duration-700 hover:scale-105"
               />
-
             </div>
 
-            <div className="mt-6">
-
+            <div className="mt-5 sm:mt-6">
               <h3 className="text-xl font-bold text-white sm:text-2xl">
                 Sanjay Das
               </h3>
 
-              <p className="mt-2 text-zinc-400">
+              <p className="mt-1.5 text-sm leading-6 text-zinc-400 sm:mt-2 sm:text-base">
                 Community Operations & Growth Leader
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
-
+              <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                 {[
                   "Bitget Wallet",
                   "Gensyn",
                   "PancakeSwap",
-                ].map((tag) => (
-
+                ].map((tag, index) => (
                   <motion.span
                     key={tag}
                     whileHover={{
                       y: -3,
                     }}
-                    className="rounded-full bg-white/10 px-3 py-1 text-xs text-white sm:text-sm"
+                    className={`rounded-full border px-2.5 py-1 text-xs sm:px-3 sm:text-sm ${
+                      index === 0
+                        ? "border-violet-400/20 bg-violet-400/10 text-violet-200"
+                        : index === 1
+                          ? "border-cyan-400/20 bg-cyan-400/10 text-cyan-200"
+                          : "border-fuchsia-400/20 bg-fuchsia-400/10 text-fuchsia-200"
+                    }`}
                   >
                     {tag}
                   </motion.span>
-
                 ))}
-
               </div>
-
             </div>
-
           </motion.div>
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }

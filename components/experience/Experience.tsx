@@ -15,100 +15,102 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="mx-auto max-w-7xl px-6 py-32"
+      className="relative overflow-hidden py-32"
     >
-      {/* Heading */}
+      {/* Electric Blue + Violet Atmosphere */}
 
-      <FadeUp>
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        {/* Blue glow */}
 
-        <div className="mb-20">
+        <div className="absolute left-[5%] top-[10%] h-[550px] w-[550px] rounded-full bg-blue-500/10 blur-[170px]" />
 
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-400">
-            Career Journey
-          </p>
+        {/* Violet glow */}
 
-          <h2 className="mt-4 text-5xl font-bold leading-tight text-white">
-            Building Web3 Communities
-            <br />
-            Since 2021.
-          </h2>
+        <div className="absolute right-[5%] top-[30%] h-[500px] w-[500px] rounded-full bg-violet-500/10 blur-[160px]" />
 
-        </div>
+        {/* Bottom blue/violet glow */}
 
-      </FadeUp>
+        <div className="absolute bottom-0 left-1/2 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-indigo-500/[0.06] blur-[160px]" />
+      </div>
 
-      {/* Featured Experience */}
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Heading */}
 
-      <StaggerContainer className="space-y-10">
+        <FadeUp>
+          <div className="mb-20 max-w-4xl">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-blue-400">
+              Career Journey
+            </p>
 
-        {featuredExperiences.map((experience) => (
+            <h2 className="mt-5 text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Building Web3 Communities
+              <br />
+              <span className="bg-gradient-to-r from-blue-300 via-indigo-300 to-violet-400 bg-clip-text text-transparent">
+                Since 2021.
+              </span>
+            </h2>
 
-          <StaggerItem key={experience.id}>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
+              A journey across community operations, regional growth,
+              campaigns, events and ecosystem development.
+            </p>
+          </div>
+        </FadeUp>
 
-            <ExperienceCard
-              experience={experience}
-            />
+        {/* Featured Experience */}
 
-          </StaggerItem>
+        <StaggerContainer className="space-y-10">
+          {featuredExperiences.map((experience) => (
+            <StaggerItem key={experience.id}>
+              <ExperienceCard experience={experience} />
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
 
-        ))}
+        {/* Previous Experience */}
 
-      </StaggerContainer>
+        <FadeUp delay={0.2}>
+          <div className="mt-24">
+            <div className="mb-8">
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-violet-400">
+                Earlier Work
+              </p>
 
-      {/* Previous Experience */}
+              <h3 className="mt-3 text-2xl font-bold text-white">
+                Earlier Experience
+              </h3>
+            </div>
 
-      <FadeUp delay={0.2}>
+            <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {previousExperiences.map((job) => (
+                <StaggerItem key={job.company}>
+                  <div className="group relative h-full">
+                    {/* Hover Glow */}
 
-        <div className="mt-24">
+                    <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-500/0 via-violet-500/15 to-blue-500/0 opacity-0 blur-xl transition-all duration-500 group-hover:opacity-100" />
 
-          <h3 className="text-2xl font-bold text-white">
-            Earlier Experience
-          </h3>
+                    {/* Card */}
 
-          <StaggerContainer
-            className="mt-8 flex flex-wrap gap-4"
-          >
+                    <div className="relative h-full overflow-hidden rounded-2xl border border-blue-400/10 bg-[#0d1117]/90 px-6 py-6 backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-violet-400/30 group-hover:bg-violet-400/[0.035]">
+                      <h4 className="font-semibold text-white transition-colors duration-300 group-hover:text-blue-200">
+                        {job.company}
+                      </h4>
 
-            {previousExperiences.map((job) => (
+                      <p className="mt-2 text-sm text-zinc-400">
+                        {job.role}
+                      </p>
 
-              <StaggerItem key={job.company}>
+                      {/* Bottom accent */}
 
-                <div
-                  className="
-                    rounded-xl
-                    border
-                    border-white/10
-                    bg-white/[0.03]
-                    px-5
-                    py-4
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-indigo-500/40
-                    hover:bg-white/[0.05]
-                  "
-                >
-
-                  <h4 className="font-semibold text-white">
-                    {job.company}
-                  </h4>
-
-                  <p className="mt-1 text-sm text-zinc-400">
-                    {job.role}
-                  </p>
-
-                </div>
-
-              </StaggerItem>
-
-            ))}
-
-          </StaggerContainer>
-
-        </div>
-
-      </FadeUp>
-
+                      <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-blue-400/0 via-violet-400/40 to-blue-400/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </FadeUp>
+      </div>
     </section>
   );
 }

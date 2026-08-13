@@ -1,13 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Calendar,
   MapPin,
   CheckCircle2,
-  ArrowRight,
 } from "lucide-react";
 
 interface Progression {
@@ -37,7 +35,7 @@ interface ExperienceCardProps {
 export default function ExperienceCard({
   experience,
 }: ExperienceCardProps) {
-  const content = (
+  return (
     <motion.div
       whileHover={{
         y: -10,
@@ -76,9 +74,7 @@ export default function ExperienceCard({
       {/* Header */}
 
       <div className="relative flex flex-col justify-between gap-8 lg:flex-row">
-
         <div className="flex items-center gap-6">
-
           <motion.div
             whileHover={{
               rotate: -5,
@@ -103,7 +99,6 @@ export default function ExperienceCard({
           </motion.div>
 
           <div>
-
             <h3 className="text-4xl font-bold text-white">
               {experience.company}
             </h3>
@@ -116,13 +111,10 @@ export default function ExperienceCard({
             >
               {experience.role}
             </p>
-
           </div>
-
         </div>
 
         <div className="space-y-3 text-zinc-400">
-
           <div className="flex items-center gap-2">
             <Calendar size={18} />
             {experience.period}
@@ -132,9 +124,7 @@ export default function ExperienceCard({
             <MapPin size={18} />
             {experience.location}
           </div>
-
         </div>
-
       </div>
 
       {/* Summary */}
@@ -156,12 +146,10 @@ export default function ExperienceCard({
         {experience.summary}
       </motion.p>
 
-      {/* Timeline */}
+      {/* Career Progression */}
 
       {experience.progression && (
-
         <div className="relative mt-12">
-
           <h4 className="mb-6 text-xl font-semibold text-white">
             Career Progression
           </h4>
@@ -172,9 +160,7 @@ export default function ExperienceCard({
               borderColor: `${experience.accent}40`,
             }}
           >
-
             {experience.progression.map((step, index) => (
-
               <motion.div
                 key={step.title}
                 initial={{
@@ -193,7 +179,6 @@ export default function ExperienceCard({
                 }}
                 className="relative"
               >
-
                 <span
                   className="absolute -left-[33px] top-2 h-3 w-3 rounded-full"
                   style={{
@@ -208,29 +193,21 @@ export default function ExperienceCard({
                 <p className="text-sm text-zinc-500">
                   {step.period}
                 </p>
-
               </motion.div>
-
             ))}
-
           </div>
-
         </div>
-
       )}
 
       {/* Achievements */}
 
       <div className="mt-12">
-
         <h4 className="mb-6 text-xl font-semibold text-white">
           Key Achievements
         </h4>
 
         <div className="grid gap-5 md:grid-cols-2">
-
           {experience.achievements.map((achievement, index) => (
-
             <motion.div
               key={achievement}
               initial={{
@@ -252,7 +229,6 @@ export default function ExperienceCard({
               }}
               className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5"
             >
-
               <CheckCircle2
                 size={22}
                 className="mt-1 shrink-0"
@@ -264,21 +240,15 @@ export default function ExperienceCard({
               <span className="text-zinc-300">
                 {achievement}
               </span>
-
             </motion.div>
-
           ))}
-
         </div>
-
       </div>
 
       {/* Tags */}
 
       <div className="mt-10 flex flex-wrap gap-3">
-
         {experience.tags.map((tag) => (
-
           <motion.span
             key={tag}
             whileHover={{
@@ -288,49 +258,25 @@ export default function ExperienceCard({
           >
             {tag}
           </motion.span>
-
         ))}
-
       </div>
 
       {/* CTA */}
 
       <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-8">
-
         <p className="text-zinc-500">
           Explore responsibilities, campaigns & gallery
         </p>
 
-        <motion.div
-          whileHover={{
-            x: 6,
-          }}
-          className="flex items-center gap-2 font-semibold"
+        <div
+          className="font-semibold"
           style={{
             color: experience.accent,
           }}
         >
-          View Case Study
-
-          <ArrowRight size={18} />
-
-        </motion.div>
-
+          Case Studies coming soon
+        </div>
       </div>
-
     </motion.div>
   );
-
-  if (experience.slug) {
-    return (
-      <Link
-        href={`/case-study/${experience.slug}`}
-        className="block"
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  return content;
 }

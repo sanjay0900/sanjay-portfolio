@@ -88,7 +88,7 @@ export const featuredExperiences = [
 
     company: "PancakeSwap",
 
-    logo: "/companies/pancakeswap.png",
+    logo: "/companies/pancake.png",
 
     accent: "#1D4ED8",
 
