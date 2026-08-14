@@ -71,9 +71,10 @@ export default function Navbar() {
             </ul>
 
             <div className="hidden items-center gap-3 lg:flex">
-              <a
-                href={RESUME_URL}
-                download
+            <a
+  href={RESUME_URL}
+  target="_blank"
+  rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-[#09090B] transition-colors hover:bg-white/90"
               >
                 <Download className="size-4" />
